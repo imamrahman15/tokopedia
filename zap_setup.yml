@@ -1,10 +1,10 @@
 - name: setting up owasp zap container  
-  hosts: gcp.imamrahman.com  
+  hosts: zap  
   remote_user: "{{ remote_user_name }}"  
   gather_facts: no  
   become: yes  
   vars:    
-    remote_user_name: root
+    remote_user_name: ubuntu
     owasp_zap_image_name: owasp/zap2docker-weekly
     
   tasks:
