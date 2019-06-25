@@ -11,6 +11,7 @@
     - name: pulling {{ owasp_zap_image_name }} container
       docker_image:
         name: "{{ owasp_zap_image_name }}"
+        
     - name: running owasp zap container
       docker_container:
         name: owasp-zap
