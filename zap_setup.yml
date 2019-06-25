@@ -1,5 +1,5 @@
 - name: setting up owasp zap container  
-  hosts: localhost  
+  hosts: gcp.imamrahman.com  
   remote_user: "{{ remote_user_name }}"  
   gather_facts: no  
   become: yes  
