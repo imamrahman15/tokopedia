@@ -1,0 +1,23 @@
+- name: setting up owasp zap container  
+  hosts: zap  
+  remote_user: "{{ remote_user_name }}"  
+  gather_facts: no  
+  become: yes  
+  vars:    
+    remote_user_name: ubuntu
+    owasp_zap_image_name: owasp/zap2docker-weekly
+    
+  tasks:
+    - name: pulling {{ owasp_zap_image_name }} container
+      docker_image:
+        name: "{{ owasp_zap_image_name }}"
+    - name: running owasp zap container
+      docker_container:
+        name: owasp-zap
+        image: "{{ owasp_zap_image_name }}"
+        interactive: yes
+        state: started
+        user: zap
+        command: zap.sh -daemon -host 0.0.0.0 -port 8090 -configapi.disablekey=true -config api.addrs.addr.name=.* -configapi.addrs.addr.regex=true
+        ports:
+          - "8090:8090"
