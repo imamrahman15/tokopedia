@@ -1,0 +1,13 @@
+- name: Testing OWASP ZAP Test Module
+  connection: local
+  hosts: localhost
+  tasks:
+  - name: Scan a website
+    owasp_zap_test_module:
+      host: "http://35.229.22.218:8888"
+      target: "https://imamrahman.com"
+      scantype: passive
+    register: output
+  - name: Print version
+    debug:
+msg: "Scan Report: {{ output }}"
