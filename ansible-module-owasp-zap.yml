@@ -10,4 +10,4 @@
     register: output
   - name: Print version
     debug:
-msg: "Scan Report: "{{ output }}""
+msg: "{{ output }}"
